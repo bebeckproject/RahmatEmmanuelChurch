@@ -1,0 +1,10 @@
+<ion-content>
+	<div class="header-page">
+		<a href="#/category/{{ post.category_id }}}"><i class="icon ion-arrow-left-c"></i></a>
+		<div>{{ post.post_name }}</div>
+	</div>
+	<div id="behind_the_story">
+		<img src="{{ upload_url + post.post_images }}" class="lazy" width="100%">
+		<div style="padding:20px 10px;" ng-bind-html="post.post_content"></div>
+	</div>
+</ion-content>

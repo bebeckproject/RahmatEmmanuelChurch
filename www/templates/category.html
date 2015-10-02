@@ -1,0 +1,20 @@
+<ion-content>
+	<div class="header-page">
+		<a href="#/dashboard"><i class="icon ion-arrow-left-c"></i></a>
+		<div>{{ category.category_name }}</div>
+	</div>
+	<div id="behind_the_story">
+		<ion-slide-box show-pager="false" on-slide-changed="slideChanged()">
+		  <ion-slide ng-repeat="item in post">
+		  	<div class="slide-box-items" ng-repeat="sub in item" style="width:{{ width_box }}px; height:{{ height_box }}px;">
+		  		<a href="#/post/{{ sub.post_id }}">
+			  		<img src="{{ upload_url + sub.post_images }}" class="lazy" width="100%" height="{{ height_img }}px">
+					<p style="padding:5px; text-align:justify">
+						<strong>{{ sub.post_name }}</strong>
+					</p>
+				</a>
+		  	</div>
+		  </ion-slide>
+		</ion-slide-box>
+	</div>
+</ion-content>

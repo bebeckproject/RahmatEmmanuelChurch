@@ -1,0 +1,37 @@
+<div id="head-bar">
+	<a href="javascript:;" ng-class="(navActive === 'newest') ? 'active' : ''" class="nav-bar" ng-click="slideTo(0)">Newest</a>
+    <a href="javascript:;" ng-class="(navActive === 'menu') ? 'active' : ''" class="nav-bar" ng-click="slideTo(1)">Menu</a>
+</div>
+<ion-content lazy-scroll>
+	<ion-slide-box show-pager="false" on-slide-changed="slideChanged()" id="slide-box" style="height:{slide_box_content_height}">
+	  <ion-slide>
+	  	<div id="newest-content">
+	  		<div id="behind_the_story">
+			  	<div class="slide-box-items" ng-repeat="item in newest" style="width:{{ width_box }}px; height:{{ height_box }}px;">
+			  		<a href="#/post/{{ item.post_id }}">
+				  		<img image-lazy-src="{{ upload_url + item.post_images }}" class="lazy" width="100%" height="{{ height_img }}px" image-lazy-background-image="true">
+						<p style="padding:5px; text-align:justify">
+							<strong>{{ item.post_name }}</strong>
+						</p>
+					</a>
+			  	</div>
+			</div>
+			
+		</div>
+	  </ion-slide>
+	  <ion-slide>
+	  	<div id="menu-content">
+			<div class="menu-items" ng-repeat="item_category in category">
+				<a href="#/category/{{ item_category.category_id }}" title="{{ item_category.name }}">
+					<img src="{{ upload_url + item_category.category_images }}" class="lazy">
+					<div class="description-overlay"></div>
+					<div class="description" style="display:none">
+						{{ item_category.category_name }} <br/>
+						<span>&nbsp;</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	  </ion-slide>
+	</ion-slide-box>
+</ion-content>
