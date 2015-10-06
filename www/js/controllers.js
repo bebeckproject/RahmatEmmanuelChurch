@@ -10,6 +10,25 @@ angular.module('starter.controller',['ngSanitize','ionicLazyLoad'])
 	}
 })
 
+.directive('loading',   ['$http' ,function ($http) {
+    return {
+        restrict: 'A',
+        link: function (scope, elm, attrs) {
+            scope.isLoading = function () {
+                return $http.pendingRequests.length > 0;
+            };
+            scope.$watch(scope.isLoading, function (v) {
+                if(v) {
+                    elm.show();
+                } else {
+                    elm.hide();
+                }
+            });
+        }
+    };
+
+}])
+
 .controller('dashboardController',function($rootScope,$scope,$timeout,$ionicSlideBoxDelegate,$ionicScrollDelegate,$ionicModal,$http) {
 	$rootScope.base_url = base_url;
 	$rootScope.api_url = api_url;
